@@ -37,7 +37,8 @@ type AdvancedFilterOptions = {
 };
 
 // Constants
-const JOB_LISTINGS: Job[] = [
+
+export const JOB_LISTINGS: Job[] = [
   {
     id: 1,
     title: "Gerente Profesional en Gestión del Talento Humano",
@@ -100,7 +101,6 @@ const JOB_LISTINGS: Job[] = [
     skills: ["Reclutamiento", "Selección", "Employer Branding"]
   }
 ];
-
 const FILTERS: FilterType[] = [
   { id: 'all', label: 'Todos', icon: Briefcase },
   { id: 'featured', label: 'Destacados', icon: Star },
@@ -723,5 +723,6 @@ const HRJobs = () => {
     </div>
   );
 };
+
 
 export default HRJobs;
