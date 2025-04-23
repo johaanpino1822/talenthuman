@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Briefcase, LogIn, User, Menu, X, ChevronDown, ChevronUp, Home, Mail, Settings, LogOut, Star, Award, Users, Bell, HelpCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import logo from '../image/logo.png';
+import logo from '../image/logo1.png';
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion';
 
 const Navbar = () => {
