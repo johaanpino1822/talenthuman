@@ -93,7 +93,7 @@ const Footer = () => {
                 TP
               </div>
               <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                TalentPro
+                NewtalentHuman
               </h3>
             </div>
             <p className="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -212,7 +212,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-gray-400 mb-4 md:mb-0 text-center md:text-left"
           >
-            &copy; {new Date().getFullYear()} TalentPro. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} NewTalentHuman. Todos los derechos reservados.
           </motion.p>
           
           <div className="flex space-x-6">

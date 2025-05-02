@@ -22,7 +22,7 @@ const About = () => {
   // Team members data
   const teamMembers = [
     {
-      name: "Alexandra Rivera",
+      name: "Daniela Zea ",
       role: "CEO & Fundadora",
       bio: "Experta en estrategia de talento con 15+ años en RH transformacional.",
       img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop"
@@ -127,14 +127,15 @@ const About = () => {
 
       {/* 3D Parallax Hero */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-black/30 z-10"></div>
+      <div className="absolute inset-0 bg-black/30 z-10"></div>
         <motion.div 
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('src/image/About.avif')" }}
           initial={{ scale: 1.2 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5 }}
         />
-        
+              
         <motion.div 
           className="relative z-20 text-center px-4"
           initial={{ opacity: 0, y: 50 }}
@@ -216,15 +217,8 @@ const About = () => {
                     className="w-full h-auto object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-8 -right-8 bg-indigo-600 text-white px-8 py-4 rounded-xl shadow-xl">
-                  <div className="flex items-center">
-                    <div className="text-3xl font-bold mr-2">15+</div>
-                    <div className="text-sm font-medium">Años de<br/>Experiencia</div>
-                  </div>
-                </div>
-                <div className="absolute -top-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
-                  <Users className="w-10 h-10 text-indigo-600" />
-                </div>
+                
+                
               </div>
             </motion.div>
 

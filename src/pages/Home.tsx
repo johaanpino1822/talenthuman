@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Target, Award, TrendingUp, ChevronRight, ArrowRight } from 'lucide-react';
+import { Users, Target, Award, TrendingUp, ChevronRight, ArrowRight, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Home = () => {
   const [hoveredService, setHoveredService] = useState(null);
   const [hoveredStat, setHoveredStat] = useState(null);
+  const [showDocuments, setShowDocuments] = useState(false);
 
   const services = [
     {
@@ -40,6 +41,30 @@ const Home = () => {
     { value: "95%", label: "Tasa de Retención" }
   ];
 
+  const pdfDocuments = [
+    {
+      id: '1',
+      title: 'Manual de Reclutamiento',
+      url: 'src/Documents/MANUALIEFAG2024Revisado.pdf',
+      description: 'Guía completa de procesos de selección',
+      size: '2.1 MB'
+    },
+    {
+      id: '2',
+      title: 'Políticas de RH',
+      url: '/documents/politicas-rh.pdf',
+      description: 'Documento oficial de políticas de recursos humanos',
+      size: '1.5 MB'
+    },
+    {
+      id: '3',
+      title: 'Formulario de Aplicación',
+      url: '/documents/formulario-aplicacion.pdf',
+      description: 'Formulario estándar para candidatos',
+      size: '0.8 MB'
+    }
+  ];
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -60,8 +85,89 @@ const Home = () => {
     }
   };
 
+  const handleDownload = (url: string, title: string) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = title.endsWith('.pdf') ? title : `${title}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="space-y-20 py-16 overflow-x-hidden">
+      {/* Botón flotante para documentos */}
+      <button 
+        onClick={() => setShowDocuments(true)}
+        className="fixed bottom-8 right-8 bg-gradient-to-r from-amber-500 to-orange-500 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 z-50 flex items-center gap-2"
+      >
+        <FileText className="h-6 w-6" />
+        <span className="hidden sm:inline">Documentos</span>
+      </button>
+
+      {/* Modal de documentos */}
+      <AnimatePresence>
+        {showDocuments && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowDocuments(false)}
+          >
+            <motion.div 
+              initial={{ scale: 0.9, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 50 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-2xl font-bold text-gray-800">Documentos Disponibles</h3>
+                  <button 
+                    onClick={() => setShowDocuments(false)}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {pdfDocuments.map((doc) => (
+                    <div key={doc.id} className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h4 className="font-semibold text-lg text-gray-800">{doc.title}</h4>
+                          <p className="text-gray-600">{doc.description}</p>
+                          <p className="text-sm text-gray-500 mt-1">{doc.size}</p>
+                        </div>
+                        <div className="flex gap-2">
+                          <button 
+                            onClick={() => window.open(doc.url, '_blank')}
+                            className="px-3 py-1 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors"
+                          >
+                            Ver
+                          </button>
+                          <button 
+                            onClick={() => handleDownload(doc.url, doc.title)}
+                            className="px-3 py-1 bg-green-100 text-green-600 rounded-md hover:bg-green-200 transition-colors"
+                          >
+                            Descargar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-32 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
@@ -169,6 +275,36 @@ const Home = () => {
               </AnimatePresence>
             </motion.div>
           ))}
+
+          {/* Tarjeta adicional para documentos */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            onClick={() => setShowDocuments(true)}
+            className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 from-amber-500 to-orange-500"></div>
+            
+            <div className="text-white mb-6 flex justify-center rounded-full p-4 bg-gradient-to-br from-amber-400 to-orange-500 shadow-md relative z-10">
+              <FileText className="h-12 w-12" />
+            </div>
+            
+            <h3 className="text-2xl font-semibold mb-4 text-gray-800 relative z-10">
+              Documentos
+            </h3>
+            
+            <p className="text-gray-600 mb-6 relative z-10">
+              Accede a nuestros recursos y formularios en PDF
+            </p>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center text-orange-600 font-medium group-hover:text-orange-800 transition-colors">
+                Ver documentos <ChevronRight className="h-5 w-5" />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
