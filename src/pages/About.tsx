@@ -22,7 +22,7 @@ const About = () => {
   // Team members data
   const teamMembers = [
     {
-      name: "Daniela Zea ",
+      name: "Daniela Zea",
       role: "CEO & Fundadora",
       bio: "Experta en estrategia de talento con 15+ años en RH transformacional.",
       img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop"
@@ -43,12 +43,42 @@ const About = () => {
 
   // Values data
   const values = [
-    { name: "Excelencia", icon: <Award className="w-8 h-8" />, color: "text-purple-600" },
-    { name: "Innovación", icon: <Zap className="w-8 h-8" />, color: "text-blue-600" },
-    { name: "Pasión", icon: <Heart className="w-8 h-8" />, color: "text-red-600" },
-    { name: "Integridad", icon: <Globe className="w-8 h-8" />, color: "text-green-600" },
-    { name: "Resultados", icon: <BarChart2 className="w-8 h-8" />, color: "text-yellow-600" },
-    { name: "Agilidad", icon: <Clock className="w-8 h-8" />, color: "text-indigo-600" }
+    { 
+      name: "Excelencia", 
+      icon: <Award className="w-8 h-8" />, 
+      color: "text-purple-600",
+      description: "Buscamos la máxima calidad en cada servicio que ofrecemos" 
+    },
+    { 
+      name: "Innovación", 
+      icon: <Zap className="w-8 h-8" />, 
+      color: "text-blue-600",
+      description: "Creemos en la mejora continua y la transformación digital" 
+    },
+    { 
+      name: "Pasión", 
+      icon: <Heart className="w-8 h-8" />, 
+      color: "text-red-600",
+      description: "Amamos lo que hacemos y eso se refleja en nuestros resultados" 
+    },
+    { 
+      name: "Integridad", 
+      icon: <Globe className="w-8 h-8" />, 
+      color: "text-green-600",
+      description: "Actuamos con ética y transparencia en todas nuestras relaciones" 
+    },
+    { 
+      name: "Colaboración", 
+      icon: <Users className="w-8 h-8" />, 
+      color: "text-yellow-600",
+      description: "Trabajamos en equipo para lograr objetivos compartidos" 
+    },
+    { 
+      name: "Agilidad", 
+      icon: <Clock className="w-8 h-8" />, 
+      color: "text-indigo-600",
+      description: "Respondemos rápidamente a las necesidades del mercado" 
+    }
   ];
 
   // Scroll progress effect
@@ -105,17 +135,17 @@ const About = () => {
   const tabs = {
     mision: {
       title: "Nuestra Misión",
-      content: "Revolucionar la conexión entre talento y organizaciones mediante inteligencia artificial y análisis predictivo, creando sinergias perfectas que impulsen el crecimiento mutuo.",
+      content: "Impulsamos el desarrollo humano y organizacional a través de soluciones integrales en talento humano, con tecnología, innovación e inclusión, promoviendo ambientes diversos, éticos y sostenibles",
       icon: <Target className="w-6 h-6" />
     },
     vision: {
       title: "Nuestra Visión",
-      content: "Ser reconocidos como el ecosistema global más avanzado para la gestión estratégica del talento, donde cada interacción crea valor exponencial para profesionales y empresas.",
+      content: "Ser en 2030 una empresa líder en Colombia en gestión del talento humano, reconocida por su enfoque inclusivo, tecnológico y humano, trasformando el mundo laboral con impacto positivo ",
       icon: <Briefcase className="w-6 h-6" />
     },
     proposito: {
       title: "Nuestro Propósito",
-      content: "Transformar el mercado laboral en un espacio donde el potencial humano encuentre su máxima expresión, generando prosperidad compartida y desarrollo sostenible.",
+      content: "Impulsar el desarrollo económico y social a través de la conexión estratégica entre profesionales y empresas, basada en valores humanos y tecnológicos.",
       icon: <Users className="w-6 h-6" />
     }
   };
@@ -127,7 +157,7 @@ const About = () => {
 
       {/* 3D Parallax Hero */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-black/30 z-10"></div>
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
         <motion.div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('src/image/About.avif')" }}
@@ -217,20 +247,18 @@ const About = () => {
                     className="w-full h-auto object-cover"
                   />
                 </div>
-                
-                
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                En <span className="font-semibold text-indigo-600">New Talent, Human</span>, hemos construido un ecosistema donde la tecnología de vanguardia y la intuición humana se fusionan para crear conexiones laborales extraordinarias.
+                En <span className="font-semibold text-indigo-600">New Talent, Human</span>, combinamos tecnología avanzada con un profundo entendimiento del comportamiento humano para revolucionar la gestión del talento.
               </p>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Más que una consultora de recursos humanos, somos arquitectos de equipos de alto desempeño. Nuestro enfoque holístico combina inteligencia artificial con psicología organizacional para descubrir no solo las habilidades, sino el potencial transformador en cada profesional.
+                Nuestra metodología única integra inteligencia artificial con psicología organizacional, permitiéndonos identificar no solo las competencias técnicas sino también el potencial de crecimiento de cada profesional.
               </p>
               <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-                Creemos en un mundo donde cada individuo puede contribuir con su auténtico valor, y cada organización puede acceder al talento que necesita para evolucionar. Esta convicción es el corazón de nuestro modelo operativo.
+                Creemos firmemente que el éxito de las organizaciones se construye sobre la base de equipos diversos, motivados y altamente capacitados.
               </p>
               
               <motion.div 
@@ -255,9 +283,9 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-6">Nuestra Filosofía</h2>
+              <h2 className="text-4xl font-bold mb-6">Nuestros Principios</h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Principios fundamentales que guían cada decisión y cada interacción
+                Los fundamentos que guían cada una de nuestras acciones y decisiones
               </p>
             </div>
             
@@ -304,9 +332,9 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Nuestros Valores</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Nuestra Cultura</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Pilares fundamentales que definen nuestra cultura organizacional
+              Los pilares que definen nuestra forma de trabajar y relacionarnos
             </p>
           </motion.div>
 
@@ -338,7 +366,7 @@ const About = () => {
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{value.name}</h3>
                   <p className="text-gray-600 text-center">
-                    {value.description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+                    {value.description}
                   </p>
                 </motion.div>
               </SwiperSlide>

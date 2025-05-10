@@ -8,30 +8,37 @@ const Home = () => {
   const [hoveredStat, setHoveredStat] = useState(null);
   const [showDocuments, setShowDocuments] = useState(false);
 
+  // Paleta de colores basada en #051e56
+  const primaryColor = '#051e56';
+  const secondaryColor = '#1a3a8f';
+  const accentColor = '#4a7cff';
+  const lightAccent = '#a8c2ff';
+  const textOnDark = '#f8fafc';
+
   const services = [
     {
       icon: <Users className="h-12 w-12" />,
       title: "Reclutamiento",
       description: "Selección precisa de talento para tu empresa",
-      color: "from-indigo-400 to-blue-500"
+      color: "from-blue-400 to-blue-600"
     },
     {
       icon: <Target className="h-12 w-12" />,
       title: "Desarrollo",
       description: "Programas de crecimiento profesional",
-      color: "from-cyan-400 to-teal-500"
+      color: "from-indigo-400 to-indigo-600"
     },
     {
       icon: <Award className="h-12 w-12" />,
       title: "Evaluación",
       description: "Análisis de desempeño y competencias",
-      color: "from-purple-400 to-fuchsia-500"
+      color: "from-purple-400 to-purple-600"
     },
     {
       icon: <TrendingUp className="h-12 w-12" />,
       title: "Consultoría",
       description: "Asesoría estratégica en RRHH",
-      color: "from-blue-400 to-indigo-500"
+      color: "from-blue-500 to-blue-700"
     }
   ];
 
@@ -99,7 +106,8 @@ const Home = () => {
       {/* Botón flotante para documentos */}
       <button 
         onClick={() => setShowDocuments(true)}
-        className="fixed bottom-8 right-8 bg-gradient-to-r from-amber-500 to-orange-500 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 z-50 flex items-center gap-2"
+        className="fixed bottom-8 right-8 bg-[#051e56] text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 z-50 flex items-center gap-2"
+        style={{ backgroundColor: primaryColor }}
       >
         <FileText className="h-6 w-6" />
         <span className="hidden sm:inline">Documentos</span>
@@ -169,10 +177,13 @@ const Home = () => {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-32 overflow-hidden">
+      <section 
+        className="relative text-white py-32 overflow-hidden"
+        style={{ backgroundColor: primaryColor }}
+      >
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-indigo-900/90"></div>
+          <div className="absolute inset-0" style={{ backgroundColor: primaryColor, opacity: 0.9 }}></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -185,13 +196,15 @@ const Home = () => {
             <motion.h1 
               variants={fadeIn}
               className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
+              style={{ color: textOnDark }}
             >
-              Transformamos el <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">Talento</span> en Éxito
+              Transformamos el <span style={{ color: lightAccent }}>Talento</span> en Éxito
             </motion.h1>
             
             <motion.p 
               variants={fadeIn}
-              className="text-xl md:text-2xl mb-12 text-blue-100 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto"
+              style={{ color: lightAccent }}
             >
               Soluciones innovadoras de gestión de talento humano para impulsar tu organización al siguiente nivel
             </motion.p>
@@ -199,13 +212,17 @@ const Home = () => {
             <motion.div variants={fadeIn}>
               <Link
                 to="/jobs"
-                className="inline-flex items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
+                className="inline-flex items-center justify-center text-white px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
+                style={{ backgroundColor: accentColor }}
               >
                 <span className="relative z-10 flex items-center">
                   Explorar Oportunidades
                   <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ backgroundColor: secondaryColor }}
+                ></span>
               </Link>
             </motion.div>
           </motion.div>
@@ -221,7 +238,10 @@ const Home = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+          <h2 
+            className="text-4xl font-bold mb-4"
+            style={{ color: primaryColor }}
+          >
             Nuestros Servicios
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -241,13 +261,21 @@ const Home = () => {
               onMouseLeave={() => setHoveredService(null)}
               className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 from-blue-500 to-indigo-500"></div>
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                style={{ backgroundColor: primaryColor }}
+              ></div>
               
-              <div className={`text-white mb-6 flex justify-center rounded-full p-4 bg-gradient-to-br ${service.color} shadow-md relative z-10`}>
+              <div 
+                className={`text-white mb-6 flex justify-center rounded-full p-4 shadow-md relative z-10 ${service.color}`}
+              >
                 {service.icon}
               </div>
               
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800 relative z-10">
+              <h3 
+                className="text-2xl font-semibold mb-4 relative z-10"
+                style={{ color: primaryColor }}
+              >
                 {service.title}
               </h3>
               
@@ -266,7 +294,8 @@ const Home = () => {
                   >
                     <Link 
                       to="/services" 
-                      className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors"
+                      className="inline-flex items-center font-medium transition-colors"
+                      style={{ color: accentColor }}
                     >
                       Saber más <ChevronRight className="h-5 w-5" />
                     </Link>
@@ -285,13 +314,22 @@ const Home = () => {
             onClick={() => setShowDocuments(true)}
             className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
           >
-            <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 from-amber-500 to-orange-500"></div>
+            <div 
+              className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+              style={{ backgroundColor: primaryColor }}
+            ></div>
             
-            <div className="text-white mb-6 flex justify-center rounded-full p-4 bg-gradient-to-br from-amber-400 to-orange-500 shadow-md relative z-10">
+            <div 
+              className="text-white mb-6 flex justify-center rounded-full p-4 shadow-md relative z-10"
+              style={{ backgroundColor: accentColor }}
+            >
               <FileText className="h-12 w-12" />
             </div>
             
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800 relative z-10">
+            <h3 
+              className="text-2xl font-semibold mb-4 relative z-10"
+              style={{ color: primaryColor }}
+            >
               Documentos
             </h3>
             
@@ -300,7 +338,10 @@ const Home = () => {
             </p>
             
             <div className="relative z-10">
-              <div className="inline-flex items-center text-orange-600 font-medium group-hover:text-orange-800 transition-colors">
+              <div 
+                className="inline-flex items-center font-medium group-hover:text-blue-800 transition-colors"
+                style={{ color: accentColor }}
+              >
                 Ver documentos <ChevronRight className="h-5 w-5" />
               </div>
             </div>
@@ -309,7 +350,10 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-50 py-24">
+      <section 
+        className="py-24"
+        style={{ backgroundColor: lightAccent }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -326,7 +370,10 @@ const Home = () => {
                 onMouseLeave={() => setHoveredStat(null)}
                 className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-500 opacity-0 hover:opacity-5 transition-opacity duration-300"></div>
+                <div 
+                  className="absolute inset-0 opacity-0 hover:opacity-5 transition-opacity duration-300"
+                  style={{ backgroundColor: primaryColor }}
+                ></div>
                 
                 <motion.div 
                   animate={{ 
@@ -334,12 +381,16 @@ const Home = () => {
                     rotate: hoveredStat === index ? 2 : 0
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-6"
+                  className="text-5xl font-bold mb-6"
+                  style={{ color: primaryColor }}
                 >
                   {stat.value}
                 </motion.div>
                 
-                <div className="text-xl text-gray-700">
+                <div 
+                  className="text-xl"
+                  style={{ color: secondaryColor }}
+                >
                   {stat.label}
                 </div>
                 
@@ -348,7 +399,8 @@ const Home = () => {
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
                     transition={{ duration: 0.4 }}
-                    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-indigo-400"
+                    className="absolute bottom-0 left-0 h-1"
+                    style={{ backgroundColor: accentColor }}
                   />
                 )}
               </motion.div>
@@ -364,25 +416,34 @@ const Home = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-12 text-center shadow-xl"
+          className="rounded-3xl p-12 text-center shadow-xl"
+          style={{ backgroundColor: primaryColor }}
         >
-          <h3 className="text-3xl font-bold text-white mb-6">
+          <h3 
+            className="text-3xl font-bold mb-6"
+            style={{ color: textOnDark }}
+          >
             ¿Listo para transformar tu gestión de talento?
           </h3>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p 
+            className="text-xl mb-8 max-w-2xl mx-auto"
+            style={{ color: lightAccent }}
+          >
             Descubre cómo podemos ayudarte a encontrar y retener el mejor talento para tu organización.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               to="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-50 hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+              className="bg-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+              style={{ color: primaryColor }}
             >
               Contactar Ahora
               <ArrowRight className="h-5 w-5 ml-2" />
             </Link>
             <Link
               to="/about"
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+              className="bg-transparent border-2 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+              style={{ borderColor: textOnDark, color: textOnDark }}
             >
               Conócenos Más
             </Link>

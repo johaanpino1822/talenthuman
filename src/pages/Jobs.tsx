@@ -37,7 +37,6 @@ type AdvancedFilterOptions = {
 };
 
 // Constants
-
 export const JOB_LISTINGS: Job[] = [
   {
     id: 1,
@@ -99,8 +98,48 @@ export const JOB_LISTINGS: Job[] = [
     featured: true,
     logo: "https://via.placeholder.com/80/059669/ffffff?text=TF",
     skills: ["Reclutamiento", "Selección", "Employer Branding"]
+  },
+  {
+    id: 4,
+    title: "Asistente Junior de Recursos Humanos",
+    company: "People First",
+    location: "Cali, Colombia",
+    salary: "$1,200 - $1,800",
+    requirements: [
+      "0-2 años de experiencia",
+      "Apoyo en procesos de nómina",
+      "Manejo de archivos",
+      "Atención al empleado",
+      "Conocimientos básicos de leyes laborales"
+    ],
+    type: "Medio Tiempo",
+    posted: "Hace 2 días",
+    featured: false,
+    logo: "https://via.placeholder.com/80/f59e0b/ffffff?text=PF",
+    skills: ["Organización", "Atención al detalle", "Comunicación"]
+  },
+  {
+    id: 5,
+    title: "Director de Cultura Organizacional",
+    company: "Culture Corp",
+    location: "Bogotá, Colombia",
+    salary: "$6,000 - $8,000",
+    requirements: [
+      "8+ años de experiencia",
+      "Diseño de estrategias culturales",
+      "Liderazgo de equipos",
+      "Indicadores de clima laboral",
+      "Gestión del cambio",
+      "Comunicación organizacional"
+    ],
+    type: "Tiempo Completo",
+    posted: "Hace 1 semana",
+    featured: true,
+    logo: "https://via.placeholder.com/80/10b981/ffffff?text=CC",
+    skills: ["Liderazgo", "Estrategia", "Gestión del cambio"]
   }
 ];
+
 const FILTERS: FilterType[] = [
   { id: 'all', label: 'Todos', icon: Briefcase },
   { id: 'featured', label: 'Destacados', icon: Star },
@@ -497,7 +536,6 @@ const SearchAndFilters = ({
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   
-  // Simulate loading for demo purposes
   useEffect(() => {
     if (searchQuery) {
       setIsLoading(true);
@@ -686,6 +724,59 @@ const HRJobs = () => {
     salaryRanges: []
   });
 
+  // Función para filtrar los trabajos
+  const filteredJobs = JOB_LISTINGS.filter(job => {
+    // Filtro por búsqueda
+    const matchesSearch = 
+      searchQuery === '' ||
+      job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (job.skills && job.skills.some(skill => 
+        skill.toLowerCase().includes(searchQuery.toLowerCase())
+      )) ||
+      job.requirements.some(req => 
+        req.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+    // Filtro por filtro activo (pestañas)
+    const matchesActiveFilter = 
+      activeFilter === 'all' ||
+      (activeFilter === 'featured' && job.featured) ||
+      (activeFilter === 'remote' && job.location.toLowerCase().includes('remoto')) ||
+      (activeFilter === 'fulltime' && job.type === 'Tiempo Completo') ||
+      (activeFilter === 'leadership' && 
+        (job.title.toLowerCase().includes('gerente') || 
+         job.title.toLowerCase().includes('director') ||
+         job.title.toLowerCase().includes('líder'))
+      );
+
+    // Filtro por filtros avanzados
+    const matchesAdvancedFilters = 
+      (appliedFilters.jobTypes.length === 0 || appliedFilters.jobTypes.includes(job.type)) &&
+      (appliedFilters.experienceLevels.length === 0 || 
+        appliedFilters.experienceLevels.some(level => {
+          if (level === 'Junior') return job.salary.includes('$1,000') || job.salary.includes('$2,000');
+          if (level === 'Mid-Level') return job.salary.includes('$2,000') || job.salary.includes('$3,000');
+          if (level === 'Senior') return job.salary.includes('$3,000') || job.salary.includes('$5,000');
+          if (level === 'Directivo') return job.salary.includes('$5,000') || job.title.toLowerCase().includes('gerente');
+          return false;
+        })) &&
+      (appliedFilters.salaryRanges.length === 0 ||
+        appliedFilters.salaryRanges.some(range => {
+          const [min, max] = range.replace('$', '').split('-').map(Number);
+          const jobMin = Number(job.salary.split('-')[0].replace(/[^0-9]/g, ''));
+          const jobMax = max ? Number(job.salary.split('-')[1]?.replace(/[^0-9]/g, '')) : Infinity;
+          
+          if (max) {
+            return jobMin >= min && jobMax <= max;
+          } else {
+            return jobMin >= min;
+          }
+        }));
+
+    return matchesSearch && matchesActiveFilter && matchesAdvancedFilters;
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -712,17 +803,34 @@ const HRJobs = () => {
           setAppliedFilters={setAppliedFilters}
         />
         
-        <div className="space-y-6">
-          {JOB_LISTINGS.map((job, index) => (
-            <JobCard key={job.id} job={job} index={index} />
-          ))}
-        </div>
+        {filteredJobs.length > 0 ? (
+          <div className="space-y-6">
+            {filteredJobs.map((job, index) => (
+              <JobCard key={job.id} job={job} index={index} />
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="bg-white rounded-xl shadow-sm p-12 text-center"
+          >
+            <div className="mx-auto h-24 w-24 text-gray-400 mb-6">
+              <Search className="h-full w-full" />
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
+              No se encontraron resultados
+            </h3>
+            <p className="text-gray-500">
+              No hay trabajos que coincidan con tus criterios de búsqueda. Intenta ajustar tus filtros.
+            </p>
+          </motion.div>
+        )}
         
         <Pagination />
       </div>
     </div>
   );
 };
-
 
 export default HRJobs;
