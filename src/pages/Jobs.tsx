@@ -43,7 +43,7 @@ export const JOB_LISTINGS: Job[] = [
     title: "Gerente Profesional en Gestión del Talento Humano",
     company: "Recursos Humanos S.A.",
     location: "Bogotá, Colombia",
-    salary: "$4,500 - $6,500",
+    salary: "$5.000.000 - $6.000.000",
     requirements: [
       "5+ años de experiencia", 
       "Políticas de gestión del talento",
@@ -64,7 +64,7 @@ export const JOB_LISTINGS: Job[] = [
     title: "Especialista en Desarrollo Organizacional",
     company: "Growth Consulting",
     location: "Remoto",
-    salary: "$3,800 - $5,200",
+    salary: "$3.000.000 - $6.000.000",
     requirements: [
       "4+ años de experiencia",
       "Desarrollo organizacional",
@@ -84,7 +84,7 @@ export const JOB_LISTINGS: Job[] = [
     title: "Coordinador de Reclutamiento y Selección",
     company: "Talent Finders",
     location: "Medellín, Colombia",
-    salary: "$3,000 - $4,000",
+    salary: "$5.000.000 - $6.000.000",
     requirements: [
       "3+ años de experiencia",
       "Procesos de reclutamiento",
@@ -104,7 +104,7 @@ export const JOB_LISTINGS: Job[] = [
     title: "Asistente Junior de Recursos Humanos",
     company: "People First",
     location: "Cali, Colombia",
-    salary: "$1,200 - $1,800",
+    salary: "$5.000.000 - $6.000.000",
     requirements: [
       "0-2 años de experiencia",
       "Apoyo en procesos de nómina",
@@ -123,7 +123,7 @@ export const JOB_LISTINGS: Job[] = [
     title: "Director de Cultura Organizacional",
     company: "Culture Corp",
     location: "Bogotá, Colombia",
-    salary: "$6,000 - $8,000",
+     salary: "$5.000.000 - $6.000.000",
     requirements: [
       "8+ años de experiencia",
       "Diseño de estrategias culturales",

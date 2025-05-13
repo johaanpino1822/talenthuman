@@ -28,14 +28,12 @@ const AdminDashboard = () => {
     {
       id: 1,
       name: "Juan Pérez",
-      position: "Desarrollador Full Stack Senior",
+      position: "Gerente Profesional en Gestión del Talento Humano",
       date: "2024-03-15",
       status: "Pendiente",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       email: "juan.perez@example.com",
       phone: "+57 310 123 4567",
       experience: "8 años",
-      skills: ["React", "Node.js", "AWS", "TypeScript"],
       rating: 4.5
     },
     {
@@ -44,11 +42,9 @@ const AdminDashboard = () => {
       position: "Gerente de Marketing Digital",
       date: "2024-03-14",
       status: "Revisado",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       email: "maria.garcia@example.com",
       phone: "+57 320 234 5678",
       experience: "10 años",
-      skills: ["SEO", "Google Ads", "Analítica Web", "Redes Sociales"],
       rating: 4.8
     },
     {
@@ -57,11 +53,11 @@ const AdminDashboard = () => {
       position: "Analista de Datos Senior",
       date: "2024-03-13",
       status: "Entrevista",
-      avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+   
       email: "carlos.lopez@example.com",
       phone: "+57 315 345 6789",
       experience: "6 años",
-      skills: ["Python", "SQL", "Power BI", "Machine Learning"],
+     
       rating: 4.2
     },
     {
@@ -70,11 +66,9 @@ const AdminDashboard = () => {
       position: "Diseñadora UX/UI",
       date: "2024-03-12",
       status: "Contratado",
-      avatar: "https://randomuser.me/api/portraits/women/63.jpg",
       email: "ana.rodriguez@example.com",
       phone: "+57 300 456 7890",
       experience: "5 años",
-      skills: ["Figma", "Adobe XD", "User Research", "Prototipado"],
       rating: 4.7
     },
     {
@@ -83,11 +77,9 @@ const AdminDashboard = () => {
       position: "Especialista en RH",
       date: "2024-03-11",
       status: "Rechazado",
-      avatar: "https://randomuser.me/api/portraits/men/81.jpg",
       email: "luis.martinez@example.com",
       phone: "+57 301 567 8901",
       experience: "7 años",
-      skills: ["Reclutamiento", "Selección", "Onboarding", "Desarrollo Organizacional"],
       rating: 3.9
     }
   ];
@@ -202,11 +194,7 @@ const AdminDashboard = () => {
         </div>
         
         <div className="p-4 flex items-center space-x-3 border-b border-indigo-600">
-          <img 
-            src={user?.avatar || "https://randomuser.me/api/portraits/men/1.jpg"} 
-            alt="User" 
-            className="w-10 h-10 rounded-full"
-          />
+          
           {showSidebar && (
             <div>
               <p className="font-medium">{user?.name || "Admin"}</p>

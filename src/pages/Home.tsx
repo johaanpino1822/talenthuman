@@ -51,15 +51,15 @@ const Home = () => {
   const pdfDocuments = [
     {
       id: '1',
-      title: 'Manual de Reclutamiento',
-      url: 'src/Documents/MANUALIEFAG2024Revisado.pdf',
+      title: 'Formato de Permisos',
+      url: 'src/Documents/Formato de permisos.docx1 (1).docx',
       description: 'Guía completa de procesos de selección',
       size: '2.1 MB'
     },
     {
       id: '2',
-      title: 'Políticas de RH',
-      url: '/documents/politicas-rh.pdf',
+      title: 'Solicitud de Vacaciones',
+      url: 'src/Documents/FORMATO DE SOLICITUD VACACIONAL (1) (1).docx',
       description: 'Documento oficial de políticas de recursos humanos',
       size: '1.5 MB'
     },

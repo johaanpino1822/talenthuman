@@ -25,19 +25,19 @@ const About = () => {
       name: "Daniela Zea",
       role: "CEO & Fundadora",
       bio: "Experta en estrategia de talento con 15+ años en RH transformacional.",
-      img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop"
+     
     },
     {
       name: "Daniel Chen",
       role: "Director de Innovación",
       bio: "Pionero en tecnologías de reclutamiento basado en data science.",
-      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop"
+    
     },
     {
       name: "Sophie Laurent",
       role: "Directora de Clientes",
       bio: "Especialista en desarrollo organizacional y experiencia del empleado.",
-      img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop"
+     
     }
   ];
 
@@ -375,59 +375,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Liderazgo Ejecutivo</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              El equipo visionario detrás de nuestra estrategia transformacional
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative ${teamIndex === index ? 'z-10' : 'z-0'}`}
-                onMouseEnter={() => setHoveredCard(index)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                <div className={`bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 ${hoveredCard === index ? 'transform -translate-y-4 shadow-xl' : ''}`}>
-                  <div className="relative h-80 overflow-hidden">
-                    <img 
-                      src={member.img} 
-                      alt={member.name}
-                      className={`w-full h-full object-cover transition-transform duration-500 ${hoveredCard === index ? 'scale-110' : 'scale-100'}`}
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 ${hoveredCard === index ? 'opacity-100' : 'opacity-80'}`}></div>
-                    <div className="absolute bottom-0 left-0 p-6 w-full">
-                      <h3 className="text-2xl font-bold text-white">{member.name}</h3>
-                      <p className="text-indigo-200 font-medium">{member.role}</p>
-                    </div>
-                  </div>
-                  <div className={`p-6 transition-all duration-300 ${hoveredCard === index ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700'}`}>
-                    <p>{member.bio}</p>
-                    <button className={`mt-4 px-4 py-2 rounded-lg font-medium flex items-center ${hoveredCard === index ? 'bg-white text-indigo-600' : 'bg-indigo-600 text-white'}`}>
-                      Ver perfil <ArrowRight className="ml-2" />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* Stats Section */}
       <section className="py-20 bg-indigo-600 text-white">
